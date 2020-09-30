@@ -2,3 +2,17 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.container {
+  box-sizing: border-box;
+  margin: 20px;
+  padding: 20px;
+  width: 70%;
+}
+
+#form {
+  margin: 20px;
+  padding: 20px;
+  width: 70%;
+  align-items: center;
+}
