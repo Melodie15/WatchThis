@@ -21,7 +21,6 @@ module.exports = function(sequelize, DataTypes) {
       },
       review: {
         type: DataTypes.TEXT,
-        allowNull: false,
         validate: {
             len: [0, 500]
         }
