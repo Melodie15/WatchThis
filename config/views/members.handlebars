@@ -1,0 +1,143 @@
+
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+    </div>
+  </div>
+</nav>
+  
+	<div class="container">
+		<div class="clearfix header">
+			<h1>WatchThis!</h1>
+			<!-- toggles 'enter a new movie or show' form on click -->
+			<button id="toggleFormButton" class="btn btn-primary">Enter a New Movie or Show</button>
+		</div>
+
+		<!-- add new movie form -->
+		<div id="addItemForm">
+			<h2>Add New Movie or Show:</h2>
+			<div class="card">
+				<div class="card-body">
+					<form>
+						<div class="form-group">
+							<label for="name">Title:</label>
+							<input type="text" class="form-control" id="title" placeholder="Title">
+						</div>
+						<div class="form-group">
+							<label for="genre">Genre:</label>
+							<select class="form-control" id="genre">
+                                <option value="">-- Choose Genre --</option>
+                                <option value="Action/Adventure">Action/Adventure</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Documentary">Documentary</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Family">Family</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Sci-Fi">Sci-Fi</option>
+							</select>
+                        </div>
+                        <div class="form-group">
+							<label for="service">Streaming Service:</label>
+							<select class="form-control" id="service">
+                                <option value="">-- Choose Streaming Service --</option>
+                                <option value="Netflix">Netflix</option>
+                                <option value="Hulu">Hulu</option>
+                                <option value="HBO-Max">HBO Max</option>
+                                <option value="Amazon-Prime">Amazon Prime</option>
+                                <option value="Disney+">Disney+</option>
+                                <option value="Starz">Starz</option>
+                                <option value="Apple-TV">Apple TV</option>
+                                <option value="CBS-All-Access">CBS All Access</option>
+                                <option value="YouTube-TV">YouTube TV</option>
+                                <option value="Other">Other</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block" id="addItem">Add to Watch List</button>
+						<a href="#" id="hideForm">Hide Form</a>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<h2>View Movies & Shows:</h2>
+		<p>
+            <!-- filter items by genre -->
+			<select class="form-control" id="genreFilter">
+				<option value="">-- Filter List by Genre --</option>
+				<option value="Action/Adventure">Action/Adventure</option>
+				<option value="Comedy">Comedy</option>
+				<option value="Documentary">Documentary</option>
+				<option value="Drama">Drama</option>
+				<option value="Family">Family</option>
+				<option value="Fantasy">Fantasy</option>
+				<option value="Horror">Horror</option>
+				<option value="Mystery">Mystery</option>
+				<option value="Sci-Fi">Sci-Fi</option>
+      		</select>
+      		<select class="form-control" id="serviceFilter">
+				<option value="">-- Filter List by Streaming Service --</option>
+				<option value="Netflix">Netflix</option>
+				<option value="Hulu">Hulu</option>
+				<option value="HBO-Max">HBO Max</option>
+				<option value="Amazon-Prime">Amazon Prime</option>
+				<option value="Disney+">Disney+</option>
+				<option value="Starz">Starz</option>
+				<option value="Apple-TV">Apple TV</option>
+				<option value="CBS-All-Access">CBS All Access</option>
+				<option value="YouTube-TV">YouTube TV</option>
+				<option value="Other">Other</option>
+     		</select>
+		</p>
+
+		<!-- movie/show list table -->
+		<table class="table table-striped" id="movieList">
+			<thead class="thead-dark">
+				<tr>
+					<th class="title">Title</th>
+					<th class="genre">Genre</th>
+					<th class="service">Streaming Service</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- movie/show list will be dynamically inserted here -->
+			</tbody>
+		</table>
+	</div>
+
+  <h1>My Watch List</h1>
+  {{#each movieList}}
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ this.title }}</h5>
+            <p class="card-text">Genre: {{ this.genre }}</p>
+            <p class="card-text">Streaming Service: {{ this.service }}</p>
+            <div class="btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="checkbox" {{ #if this.watched }} checked {{ else }} unchecked> Watched
+              </label>
+            </div>
+            <button class="btn btn-primary float-right" id="deleteBtn">Delete</button>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
