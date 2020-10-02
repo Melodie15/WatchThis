@@ -1,14 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "hoefosho3",
+<<<<<<< HEAD
+    "password": "",
+=======
+    "password": "",
+>>>>>>> 985382999031c18ef9449764e628d819be8321ca
     "database": "watchthis",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "hoefosho3",
+<<<<<<< HEAD
+    "password": "",
+=======
+    "password": "",
+>>>>>>> 985382999031c18ef9449764e628d819be8321ca
     "database": "watchthis",
     "host": "127.0.0.1",
     "dialect": "mysql"
