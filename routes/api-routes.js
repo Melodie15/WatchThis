@@ -49,18 +49,5 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
-  });
-  app.get("/api/allList", (req, res) => {
-    console.log("Entered api routes getAll");
-    console.log(req);
-    db.List.findAll({
-      where: {
-        userId: req.user.id
-      }
-    }).then(dbList => {
-      console.log ("this is the database List")
-      console.log(dbList);
-      res.json(dbList);
-    });
-  });
+  }); 
 };
