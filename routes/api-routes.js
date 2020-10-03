@@ -49,17 +49,14 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
-  }); 
-  app.get("/api/allList", function(req, res) {
+  });
+  app.get("/api/allList", (req, res) => {
     db.List.findAll({
       where: {
         id: req.params.id
       }
-    })
-    .then(function(dbList) {
+    }).then(dbList => {
       res.json(dbList);
     });
   });
 };
-
-
