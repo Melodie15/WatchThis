@@ -36,6 +36,5 @@ module.exports = function(app) {
       console.log(dbList);
       res.render("members", {movieList: dbList});
     });
-    
   });
 };
