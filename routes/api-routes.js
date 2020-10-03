@@ -50,16 +50,6 @@ module.exports = function(app) {
       });
     }
   }); 
-  app.get("/api/allList", function(req, res) {
-    db.List.findAll({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(function(dbList) {
-      res.json(dbList);
-    });
-  });
 };
 
 
