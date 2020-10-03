@@ -3,6 +3,7 @@ $(document).ready(() => {
   // and updates the HTML on the page
   $.get("/api/allList", (req, res) => {
     console.log("entered members.js");
-    res.render("members", res);
+    console.log(res);
+    res.render("members", {movieList: res.List.dataValues});
   });
 });
