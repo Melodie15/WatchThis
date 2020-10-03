@@ -51,11 +51,15 @@ module.exports = function(app) {
     }
   });
   app.get("/api/allList", (req, res) => {
+    console.log("Entered api routes getAll");
+    console.log(req);
     db.List.findAll({
       where: {
-        id: req.params.id
+        userId: req.user.id
       }
     }).then(dbList => {
+      console.log ("this is the database List")
+      console.log(dbList);
       res.json(dbList);
     });
   });
