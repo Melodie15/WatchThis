@@ -1,3 +1,11 @@
+//Add Movie / Hide form functionality
+$("#toggleFormButton, #hideForm").click(() => {
+  $("#addItemForm").toggle("slow", function() {
+    $("#toggleFormButton").text(
+      $(this).is(":visible") ? "Hide Form" : "Enter a New Movie or Show"
+    );
+  });
+});
 /* eslint-disable prefer-arrow-callback */
 $(document).ready(() => {
   $("#addItemForm").on("submit", function(event) {

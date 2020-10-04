@@ -65,7 +65,8 @@
 			</div>
 		</div>
 
-		<h2>View Movies & Shows:</h2>
+  <h1>My Watch List</h1>
+  <!--<h2>View Movies & Shows:</h2>-->
 		<p>
             <!-- filter items by genre -->
 			<select class="form-control" id="genreFilter">
@@ -95,7 +96,7 @@
      		</select>
 		</p>
 
-		<!-- movie/show list table -->
+		<!-- movie/show list table
 		<table class="table table-striped" id="movieList">
 			<thead class="thead-dark">
 				<tr>
@@ -105,12 +106,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- movie/show list will be dynamically inserted here -->
+				movie/show list will be dynamically inserted here
 			</tbody>
-		</table>
+		</table>-->
 	</div>
-
-  <h1>My Watch List</h1>
   {{#each movieList}}
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
@@ -133,8 +132,6 @@
       </div>
     </div>
   {{/each}}
-
-
 
 
 
