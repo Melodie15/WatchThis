@@ -19,13 +19,12 @@ $(document).ready(() => {
     });
   });
 
-  $("#deleteBtn").on("click", function (event) {
+  $("#deleteBtn").on("click", function(event) {
     event.preventDefault();
-    let id = $(this).data("id");
-    console.log(id)
-    $.post("/api/delete/"+id).then(() => {
+    const id = $(this).data("id");
+    console.log(id);
+    $.post("/api/delete/" + id).then(() => {
       window.location.href = "/members";
     });
   });
 });
-
