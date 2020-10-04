@@ -65,4 +65,18 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+
+  app.post("/api/delete/:id", (req, res) => {
+    console.log(req.params.id)
+    db.List.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(() => {
+      res.redirect("/members");
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
 };
