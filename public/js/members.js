@@ -8,6 +8,7 @@ $("#toggleFormButton, #hideForm").click(() => {
 });
 /* eslint-disable prefer-arrow-callback */
 $(document).ready(() => {
+  $("#addItemForm").hide();
   $("#addItemForm").on("submit", function(event) {
     event.preventDefault();
     console.log("Entered pub members.js submit form");
