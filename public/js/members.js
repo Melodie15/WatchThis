@@ -1,16 +1,8 @@
 /* eslint-disable prefer-arrow-callback */
 $(document).ready(() => {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/allList", res => {
-    console.log("entered members.js");
-    console.log(res);
-    console.log(res.data);
-    res.render("members", { movieList: res.data });
-  });
-
   $("#addItemForm").on("submit", function(event) {
     event.preventDefault();
+    console.log("Entered pub members.js submit form");
 
     const newMovie = {
       title: $("#title")
@@ -19,9 +11,11 @@ $(document).ready(() => {
       genre: $("#genre").val(),
       service: $("#service").val()
     };
+    console.log("New Movie:");
+    console.log(newMovie);
 
-    $.post("/api/new", newMovie).then(function(data) {
-      console.log(data);
+    $.post("/api/new", newMovie).then(() => {
+      window.location.href = "/members";
     });
   });
 });
