@@ -18,4 +18,14 @@ $(document).ready(() => {
       window.location.href = "/members";
     });
   });
+
+  $("#deleteBtn").on("click", function (event) {
+    event.preventDefault();
+    let id = $(this).data("id");
+    console.log(id)
+    $.post("/api/delete/"+id).then(() => {
+      window.location.href = "/members";
+    });
+  });
 });
+
