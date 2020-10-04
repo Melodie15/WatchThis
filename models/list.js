@@ -20,13 +20,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
-    review: {
-      type: DataTypes.TEXT,
+    ratingType: {
+      type: DataTypes.STRING,
       validate: {
-        len: [0, 500]
+        len: [0, 100]
       }
     },
-    img:{
+    rating: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 100]
+      }
+    },
+    image: {
       type: DataTypes.STRING
     }
   });

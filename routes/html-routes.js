@@ -8,14 +8,16 @@ const list = require("../models/list");
 
 function createList(dbList) {
   const movieList = [];
-  for (let i = 0; i < dbList.length; i++) {
+  for (let i = dbList.length - 1; i >= 0; i--) {
     movie = {
       id: dbList[i].dataValues.id,
       title: dbList[i].dataValues.title,
       genre: dbList[i].dataValues.genre,
       service: dbList[i].dataValues.service,
       watched: dbList[i].dataValues.watched,
-      review: dbList[i].dataValues.review,
+      ratingType: dbList[i].dataValues.ratingType,
+      rating: dbList[i].dataValues.rating,
+      image: dbList[i].dataValues.image,
       UserId: dbList[i].dataValues.UserId
     };
     movieList.push(movie);
