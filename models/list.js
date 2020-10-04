@@ -17,13 +17,17 @@ module.exports = function(sequelize, DataTypes) {
     },
     watched: {
       type: DataTypes.BOOLEAN,
-      default: false
+      allowNull: false,
+      defaultValue: false
     },
     review: {
       type: DataTypes.TEXT,
       validate: {
         len: [0, 500]
       }
+    },
+    img:{
+      type: DataTypes.STRING
     }
   });
 
