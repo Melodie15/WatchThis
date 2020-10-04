@@ -3,17 +3,17 @@ module.exports = function(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      len: [1]
+      len: [1, 140]
     },
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
-      len: [1]
+      len: [1, 100]
     },
     service: {
       type: DataTypes.STRING,
       allowNull: false,
-      len: [1]
+      len: [1, 100]
     },
     watched: {
       type: DataTypes.BOOLEAN,

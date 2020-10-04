@@ -49,5 +49,20 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
-  }); 
+  });
+
+  app.post("/api/new", (req, res) => {
+    db.List.create({
+      title: req.body.title,
+      genre: req.body.genre,
+      service: req.body.service,
+      UserId: req.user.id
+    })
+      .then(() => {
+        res.redirect("/members");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
 };

@@ -4,6 +4,25 @@ const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const list = require("../models/list");
+
+function createList(dbList) {
+  const movieList = [];
+  for (let i = 0; i < dbList.length; i++) {
+    movie = {
+      id: dbList[i].dataValues.id,
+      title: dbList[i].dataValues.title,
+      genre: dbList[i].dataValues.genre,
+      service: dbList[i].dataValues.service,
+      watched: dbList[i].dataValues.watched,
+      review: dbList[i].dataValues.review,
+      UserId: dbList[i].dataValues.UserId
+    };
+    movieList.push(movie);
+  }
+  console.log(movieList);
+  return movieList;
+}
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
@@ -25,16 +44,14 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    console.log(req);
+    //console.log(req);
     db.List.findAll({
       where: {
-        id: req.user.id
+        userId: req.user.id
       }
-    })
-    .then(function(dbList) {
-      console.log("This is the dbList in HTML-Routes");
-      console.log(dbList);
-      res.render("members", {movieList: dbList});
+    }).then(dbList => {
+      //console.log(dbList);
+      res.render("members", { movieList: createList(dbList) });
     });
   });
 };
