@@ -56,7 +56,7 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
-  });
+  }); //end of user get
 
   //insert new movie in to db, then redirect to members
   app.post("/api/new", (req, res) => {
@@ -99,10 +99,10 @@ module.exports = function(app) {
             res.status(401).json(err);
           });
       });
-  });
+  }); //end of new post
 
+  //Route to delete a record
   app.post("/api/delete/:id", (req, res) => {
-    console.log(req.params.id);
     db.List.destroy({
       where: {
         id: req.params.id
@@ -114,5 +114,23 @@ module.exports = function(app) {
       .catch(err => {
         res.status(401).json(err);
       });
-  });
-};
+  }); //end of delete
+
+  //Route to update watched of a record
+  app.put("/api/watch/:id/:bool", (req, res) => {
+    db.List.update(
+      {
+        watched: bool
+      },
+      {
+        where: { id: req.params.id }
+      }
+    )
+      .then(() => {
+        res.redirect("/members");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  }); //end of watched put
+}; //end of export
