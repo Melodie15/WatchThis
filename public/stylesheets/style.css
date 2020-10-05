@@ -1,18 +1,62 @@
 form.signup,
 form.login {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .container {
   box-sizing: border-box;
   margin: 20px;
-  padding: 20px;
+  padding: 60px;
   width: 70%;
 }
 
-#form {
-  margin: 20px;
-  padding: 20px;
-  width: 70%;
-  align-items: center;
+body {
+  height: 100%;
+  margin: 0;
+  background: url("/assets/images/statictv.gif");
+  background-size: 30%;
+  font-family: 'Limelight', cursive;
+  font-size: 20px;
+}
+
+.navbar {
+  background-color: yellow;
+}
+
+.header {
+  text-align: center;
+  background-color: orange;
+  text-shadow: 2px 2px red;
+  font-family: 'Fascinate Inline', cursive;
+}
+
+#login {
+  background-color: darkred;
+  margin: auto;
+  float: right;
+  color: yellow;
+  opacity: 0.8;
+}
+
+#login-header {
+  color: orange;
+  text-shadow: 2px 2px yellow;
+  text-align: center;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+#login-btn {
+  color: darkred;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+#here-btn {
+  color: orange;
+}
+
+.card-img{
+  width: 100%;
+  height: auto;
 }
