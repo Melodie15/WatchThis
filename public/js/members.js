@@ -28,7 +28,7 @@ $(document).ready(() => {
     });
   });
 
-  $("#deleteBtn").on("click", function(event) {
+  $("#watch-list").on("click", ".delete-btn", function(event) {
     event.preventDefault();
     const id = $(this).data("id");
     console.log(id);
@@ -36,4 +36,18 @@ $(document).ready(() => {
       window.location.href = "/members";
     });
   });
+
+  //listener for watched update
+  $("#watch-list").on("click", ".watched-toggle", function(event) {
+    console.log("entered change event");
+    event.preventDefault;
+    let bool = $this.prop("checked");
+    console.log("bool= " + bool);
+    bool = !bool;
+    console.log("!bool= " + bool);
+    const id = $(this).data("id");
+    console.log("id = " + id);
+  }); //end of toggle listener
+
+  //new listener try
 });
