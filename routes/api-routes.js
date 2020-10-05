@@ -1,6 +1,13 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const axios = require("axios");
+const { response } = require("express");
+const { contained } = require("sequelize");
+
+//variables used
+const omdbKey = "c45795aa";
+const omdbTitleUrl = "http://www.omdbapi.com/?apikey=" + omdbKey + "&t=";
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -51,12 +58,55 @@ module.exports = function(app) {
     }
   });
 
+  //insert new movie in to db, then redirect to members
   app.post("/api/new", (req, res) => {
-    db.List.create({
-      title: req.body.title,
-      genre: req.body.genre,
-      service: req.body.service,
-      UserId: req.user.id
+    // variables for storing response
+    let image = "/assets/images/theater-sign.jpg";
+    let ratingType = "no reviews available";
+    let rating = "";
+    //api call to omdb to get rating and image
+    formTitle = req.body.title.replace(/\s/g, "+");
+    axios
+      .get(omdbTitleUrl + formTitle)
+      .then(response => {
+        console.log(response.data.Ratings[0].Source);
+        if (response.data.Poster !== null) {
+          image = response.data.Poster;
+          console.log("Image = " + image);
+        }
+        if (response.data.Ratings !== null) {
+          ratingType = response.data.Ratings[0].Source;
+          rating = response.data.Ratings[0].Value;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => {
+        db.List.create({
+          title: req.body.title,
+          genre: req.body.genre,
+          service: req.body.service,
+          UserId: req.user.id,
+          rating: rating,
+          ratingType: ratingType,
+          image: image
+        })
+          .then(() => {
+            res.redirect("/members");
+          })
+          .catch(err => {
+            res.status(401).json(err);
+          });
+      });
+  });
+
+  app.post("/api/delete/:id", (req, res) => {
+    console.log(req.params.id);
+    db.List.destroy({
+      where: {
+        id: req.params.id
+      }
     })
       .then(() => {
         res.redirect("/members");
@@ -64,19 +114,5 @@ module.exports = function(app) {
       .catch(err => {
         res.status(401).json(err);
       });
-  });
-
-  app.post("/api/delete/:id", (req, res) => {
-    console.log(req.params.id)
-    db.List.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(() => {
-      res.redirect("/members");
-    })
-    .catch(err => {
-      res.status(401).json(err);
-    });
   });
 };
