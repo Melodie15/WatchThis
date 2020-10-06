@@ -1,3 +1,5 @@
+## Watch This!
+
 ![badge](https://img.shields.io/badge/license--green)
 
 With so many shows and movies availble to stream on multiple services, it's hard to keep track of what's playing where. Watch This! is your personalized watch list where you can track the shows and movies you want to watch, where they're streaming, update if you've watched them, and delete them from your list. 
