@@ -10,37 +10,39 @@
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+<!--HEADER & LOGOUT BUTTON-->
+<nav class="navbar justify-content-center" id="main-nav">
+    <div class="mx-auto order-0">
+        <nav class="navbar-brand mx-auto mb-0 h1">WatchThis!</nav>
     </div>
-  </div>
+    <div class="navbar-nav-scroll justify-content-end">
+        <ul class="nav navbar-nav">
+            <li class="nav-item ml-auto">
+                <a class="nav-link p-1" id="logout" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>
-  
-	<div class="container">
-		<div class="clearfix header">
-			<h1>WatchThis!</h1>
-			<!-- toggles 'enter a new movie or show' form on click -->
-			<button id="toggleFormButton" class="btn btn-primary">Enter a New Movie or Show</button>
-		</div>
 
-		<!-- add new movie form -->
-		<div id="addItemForm">
-			<h2>Add New Movie or Show:</h2>
+<!--ADD SHOW/MOVIE FORM -->
+<main class="container">
+	<div class="columns mt-4">
+		<div class="column">
 			<div class="card">
-				<div class="card-body">
-					<form>
-						<div class="form-group">
-							<label for="name">Title:</label>
-							<input type="text" class="form-control" id="title" placeholder="Title">
-						</div>
-						<div class="form-group">
-							<label for="genre">Genre:</label>
+				<!--Toggles 'enter a new movie or show' form on click-->
+				<button id="toggleFormButton" class="btn btn-warning">Enter a New Movie or Show</button>
+				<!--Add new movie form-->
+				<div id="addItemForm" class="card-content has-text-centered">
+					<h2>Add New Movie or Show:</h2>
+					<form class="new-movie">
+						<!--Movie Title-->
+						<div class="form-group mx-auto">
+                            <input type="text" class="form-control" id="title" placeholder="Title"/>
+                        </div>
+						<!--Choose a Genre-->
+						<div class="form-group mx-auto">
 							<select class="form-control" id="genre">
-                                <option value="">-- Choose Genre --</option>
+                                <option value="">-- Select a Genre --</option>
                                 <option value="Action/Adventure">Action/Adventure</option>
                                 <option value="Comedy">Comedy</option>
                                 <option value="Documentary">Documentary</option>
@@ -52,10 +54,10 @@
                                 <option value="Sci-Fi">Sci-Fi</option>
 							</select>
                         </div>
-                        <div class="form-group">
-							<label for="service">Streaming Service:</label>
+						<!--Choose Streaming Service-->
+                        <div class="form-group mx-auto">
 							<select class="form-control" id="service">
-                                <option value="">-- Choose Streaming Service --</option>
+                                <option value="">-- Select a Streaming Service --</option>
                                 <option value="Netflix">Netflix</option>
                                 <option value="Hulu">Hulu</option>
                                 <option value="HBO-Max">HBO Max</option>
@@ -68,18 +70,18 @@
                                 <option value="Other">Other</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary btn-block" id="addItem">Add to Watch List</button>
-						<a href="#" id="hideForm">Hide Form</a>
+						<!--Submit Button-->
+						<button type="submit" class="btn btn-warning btn-block" id="addItem formBtns">Add to Watch List</button>
 					</form>
 				</div>
 			</div>
 		</div>
+	</div>
 
-  <h1>My Watch List</h1>
-  <!--<h2>View Movies & Shows:</h2>-->
-		<p>
-            <!-- filter items by genre -->
-			<select class="form-control" id="genreFilter">
+  	<h1 id="list-title">My Watch List</h1>
+  		<p>
+        	<!--Filter Items by Genre-->
+			<select class="form-control mx-auto" id="genreFilter">
 				<option value="">-- Filter List by Genre --</option>
 				<option value="Action/Adventure">Action/Adventure</option>
 				<option value="Comedy">Comedy</option>
@@ -91,7 +93,8 @@
 				<option value="Mystery">Mystery</option>
 				<option value="Sci-Fi">Sci-Fi</option>
       		</select>
-      		<select class="form-control" id="serviceFilter">
+			<!--Filter Items by Streaming Service-->
+      		<select class="form-control mx-auto" id="serviceFilter">
 				<option value="">-- Filter List by Streaming Service --</option>
 				<option value="Netflix">Netflix</option>
 				<option value="Hulu">Hulu</option>
@@ -106,44 +109,43 @@
      		</select>
 		</p>
 
-	</div>
-	<div id="watch-list">
-  {{#each movieList}}
-	  <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src={{ this.image }} class="card-img" alt="poster" style="max-width: 100%" style="height: auto;">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ this.title }}</h5>
-            <p class="card-text">Genre: {{ this.genre }}</p>
-            <p class="card-text">Streaming Service: {{ this.service }}</p>
+<!--Beginning of Movie Cards-->
+	<div class="column" id="watch-list">
+	{{#each movieList}}
+		<div class="card mb-3" style="max-width: 540px; max-height: 300px">
+			<div class="row no-gutters">
+				<div class="col-md-4">
+				<img src={{ this.image }} class="card-img" alt="poster" style="max-width: 100%" style="height: auto;">
+				</div>
+				<div class="col-md-8" id="movieCard">
+					<div class="card-body">
+						<h5 class="card-title">{{ this.title }}</h5>
+						<p class="card-text">Genre: {{ this.genre }}</p>
+						<p class="card-text">Streaming Service: {{ this.service }}</p>
 						<p class="card-text">{{this.ratingType}} : {{ this.rating }}</p>
-
-
-						{{!-- <label for="toggle">
-						<input class="btn watched-toggle" type="checkbox" id="watched-toggle" data-toggle="toggle" data-on="YES" data-off="NO" {{#if watched}} checked {{/if}}
-							data-onstyle="primary" data-offstyle="warning" data-id={{this.id}}>
+						<label for="toggle">
+							<input class="watched-toggle" type="checkbox" id="watchedBtn" data-toggle="toggle" data-on="YES" data-off="NO" {{#if watched}} checked {{/if}} 
+							data-onstyle="success" data-offstyle="secondary" data-id={{this.id}}>
 							Watched
-						</label> --}}
-						<button class="btn watched-btn {{#if watched}} btn-success {{else}} btn-warning {{/if}}"
-							data-id={{this.id}} data-watched={{this.watched}}>
-							{{#if watched}} Watched {{else}} Not Watched{{/if}}
-							</button>
+						</label>
+						<button class="btn btn-warning float-right delete-btn" id="deleteBtn" data-id={{this.id}}>Delete</button>
+						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-						
-            <button class="btn btn-primary float-right delete-btn" id="deleteBtn" data-id={{this.id}}>Delete</button>
 
-
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
 	{{/each}}
 	</div>
+ <!--Footer-->
+	<footer class="text-center fixed-bottom bg-dark">
+		<div class="card-footer">
+			<small class="text-white mx-auto">&copy; Copyright 2020 • WatchThis!</small>
+		</div>
+	</footer>
+</main>
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
+<!--JQuery & JavaScript file links-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
