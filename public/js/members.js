@@ -37,17 +37,38 @@ $(document).ready(() => {
     });
   });
 
-  //listener for watched update
-  $("#watch-list").on("click", ".watched-toggle", function(event) {
-    console.log("entered change event");
-    event.preventDefault;
-    let bool = $this.prop("checked");
-    console.log("bool= " + bool);
-    bool = !bool;
-    console.log("!bool= " + bool);
+  // listener for watched button
+  $("#watch-list").on("click", ".watched-btn", function(event) {
+    event.preventDefault();
+    // console.log("entered watch listener");
     const id = $(this).data("id");
-    console.log("id = " + id);
-  }); //end of toggle listener
+    const watched = $(this).data("watched");
+    let bool = false;
+
+    // change color and button text
+    if (watched) {
+      console.log("Entered if");
+      $(this)
+        .removeClass("btn-success")
+        .addClass("btn-warning")
+        .html("Not Watched")
+        .data("watched", false);
+      bool = false;
+    } else {
+      console.log("Entered else");
+      $(this)
+        .removeClass("btn-warning")
+        .addClass("btn-success")
+        .html("Watched")
+        .data("watched", true);
+      bool = true;
+    }
+
+    //api call to update watched bool
+    $.post("/api/watch/" + id + "/" + bool).then(() => {
+      console.log("id " + id + " updated watched to " + bool);
+    });
+  });
 
   //new listener try
 });
