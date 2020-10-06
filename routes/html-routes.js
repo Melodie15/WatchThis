@@ -22,7 +22,6 @@ function createList(dbList) {
     };
     movieList.push(movie);
   }
-  console.log(movieList);
   return movieList;
 }
 

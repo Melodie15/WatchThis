@@ -106,19 +106,6 @@
      		</select>
 		</p>
 
-		<!-- movie/show list table
-		<table class="table table-striped" id="movieList">
-			<thead class="thead-dark">
-				<tr>
-					<th class="title">Title</th>
-					<th class="genre">Genre</th>
-					<th class="service">Streaming Service</th>
-				</tr>
-			</thead>
-			<tbody>
-				movie/show list will be dynamically inserted here
-			</tbody>
-		</table>-->
 	</div>
 	<div id="watch-list">
   {{#each movieList}}
@@ -135,11 +122,17 @@
 						<p class="card-text">{{this.ratingType}} : {{ this.rating }}</p>
 
 
-						<label for="toggle">
-						<input class="watched-toggle" type="checkbox" data-toggle="toggle" data-on="YES" data-off="NO" {{#if watched}} checked {{/if}}
+						{{!-- <label for="toggle">
+						<input class="btn watched-toggle" type="checkbox" id="watched-toggle" data-toggle="toggle" data-on="YES" data-off="NO" {{#if watched}} checked {{/if}}
 							data-onstyle="primary" data-offstyle="warning" data-id={{this.id}}>
 							Watched
-						</label>
+						</label> --}}
+						<button class="btn watched-btn {{#if watched}} btn-success {{else}} btn-warning {{/if}}"
+							data-id={{this.id}} data-watched={{this.watched}}>
+							{{#if watched}} Watched {{else}} Not Watched{{/if}}
+							</button>
+
+						
             <button class="btn btn-primary float-right delete-btn" id="deleteBtn" data-id={{this.id}}>Delete</button>
 
 
