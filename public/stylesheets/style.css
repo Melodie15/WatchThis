@@ -3,9 +3,13 @@ form.login {
   margin-top: 40px;
 }
 
+#watch-list {
+  margin-left: 165px;
+}
+
 .container {
   box-sizing: border-box;
-  margin: 20px;
+  margin: auto;
   padding: 60px;
   width: 70%;
 }
@@ -23,27 +27,76 @@ body {
   background-color: yellow;
 }
 
+.navbar-brand {
+  position: relative;
+  left: 35px;
+  font-size: 55px;
+  background-clip: padding-box;
+  background-color:darkred;
+  color: yellow;
+  text-shadow:orange 2px 2px 2px;
+}
+
+#main-nav {
+  background: url("/assets/images/film-roll.png");
+  background-size: 20%;
+}
+
+.form-group {
+  width: 75%;
+}
+
 .header {
   text-align: center;
   background-color: orange;
-  text-shadow: 2px 2px red;
+  text-shadow: red 2px 2px 2px;
   font-family: 'Fascinate Inline', cursive;
 }
 
 #login {
   background-color: darkred;
+  background: url("/assets/images/cinemastuff.jpg");
+  background-repeat: no-repeat;
+  background-size: 550px 600px;
   margin: auto;
-  float: right;
+  margin-left: 185px;
   color: yellow;
-  opacity: 0.8;
+  text-shadow: black 2px 2px 2px;
 }
 
 #login-header {
   color: orange;
-  text-shadow: 2px 2px yellow;
+  text-shadow: yellow 2px 2px;
   text-align: center;
   font-weight: bold;
   font-size: 35px;
+}
+
+.card-title {
+  font-size: 25px;
+  text-decoration: underline;
+  color: white;
+  text-shadow: black 2px 2px;
+  text-decoration-color: orange;
+}
+
+#movieCard {
+  background-color: darkred;
+  color: white;
+}
+
+.card-text {
+  color: yellow;
+}
+
+#list-title {
+  text-align: center;
+  background: yellow;
+  color: black;
+  font-size: 45px;
+  text-shadow: orange 2px 2px 2px;
+  text-decoration: underline;
+  text-decoration-color: darkred;
 }
 
 #login-btn {
@@ -52,11 +105,46 @@ body {
   text-decoration: underline;
 }
 
+#logout {
+  color: darkred;
+  text-shadow: orange 2px 2px 2px;
+  text-decoration: underline;
+}
+
+#deleteBtn {
+  position: relative;
+  right: 15px;
+  top: 40px;
+  font-size: 15px;
+  color: white;
+  text-shadow: black 2px 1px 1px;
+  letter-spacing: 1px;
+}
+
+#watchedBtn {
+  position: relative;
+  right: 15px;
+  top: 20px;
+  font-size: 15px;
+  color: darkred;
+  text-shadow: white 1px 1px 1px;
+}
+
+.btn-warning {
+  color: black;
+  
+  font-size: 20px;
+}
+
 #here-btn {
   color: orange;
 }
 
-.card-img{
+.card-img {
   width: 100%;
   height: auto;
+}
+
+.text-muted {
+  font-size: 12px;
 }
