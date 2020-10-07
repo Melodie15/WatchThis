@@ -2,14 +2,14 @@
   "development": {
     "port": 3306,
     "username": "root",
-    "password": "hoefosho3",
+    "password": "",
     "database": "watchthis",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "hoefosho3",
+    "password": "",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
