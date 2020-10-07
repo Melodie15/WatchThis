@@ -1,15 +1,16 @@
 {
   "development": {
+    "port": 3000,
     "username": "root",
-    "password": "",
+    "password": "Melody@15",
     "database": "watchthis",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "",
-    "database": "watchthis",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
