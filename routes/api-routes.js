@@ -69,7 +69,6 @@ module.exports = function(app) {
     axios
       .get(omdbTitleUrl + formTitle)
       .then(response => {
-        console.log(response.data.Ratings[0].Source);
         if (response.data.Poster !== null) {
           image = response.data.Poster;
           console.log("Image = " + image);
@@ -117,19 +116,24 @@ module.exports = function(app) {
   }); //end of delete
 
   //Route to update watched of a record
-  app.put("/api/watch/:id/:bool", (req, res) => {
+  app.post("/api/watch/:id/:bool", (req, res) => {
+    console.log("bool= " + req.params.bool);
+    console.log("id= " + req.params.id);
     db.List.update(
       {
-        watched: bool
+        watched: req.params.bool
       },
       {
         where: { id: req.params.id }
       }
     )
       .then(() => {
-        res.redirect("/members");
+        console.log(
+          "id " + req.params.id + " updated watched to " + req.params.bool
+        );
       })
       .catch(err => {
+        console.log(err);
         res.status(401).json(err);
       });
   }); //end of watched put

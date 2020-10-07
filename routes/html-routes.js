@@ -37,8 +37,7 @@ function createList(dbList, filter1,filter2) {
     movieList.push(movie);
     }
   }
-  console.log(movieList);
- 
+
   return movieList;
 }
 
