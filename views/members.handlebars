@@ -123,11 +123,10 @@
 						<p class="card-text">Genre: {{ this.genre }}</p>
 						<p class="card-text">Streaming Service: {{ this.service }}</p>
 						<p class="card-text">{{this.ratingType}} : {{ this.rating }}</p>
-						<label for="toggle">
-							<input class="watched-toggle" type="checkbox" id="watchedBtn" data-toggle="toggle" data-on="YES" data-off="NO" {{#if watched}} checked {{/if}} 
-							data-onstyle="success" data-offstyle="secondary" data-id={{this.id}}>
-							Watched
-						</label>
+						<button class="btn watched-btn {{#if watched}} btn-success {{else}} btn-warning {{/if}}"
+							data-id={{this.id}} data-watched={{this.watched}}>
+							{{#if watched}} Watched {{else}} Not Watched{{/if}}
+						</button>
 						<button class="btn btn-warning float-right delete-btn" id="deleteBtn" data-id={{this.id}}>Delete</button>
 						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 					</div>

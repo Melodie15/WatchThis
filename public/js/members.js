@@ -8,13 +8,12 @@ $("#toggleFormButton, #hideForm").click(() => {
 });
 /* eslint-disable prefer-arrow-callback */
 $(document).ready(() => {
-
   const urlParams = new URLSearchParams(window.location.search);
-const myParam = urlParams.get('genre');
-$('#genreFilter').val(myParam);
+  const myParam = urlParams.get("genre");
+  $("#genreFilter").val(myParam);
 
-const myParam2 = urlParams.get('service');
-$('#serviceFilter').val(myParam2);
+  const myParam2 = urlParams.get("service");
+  $("#serviceFilter").val(myParam2);
 
   $("#addItemForm").hide();
   $("#addItemForm").on("submit", function(event) {
@@ -36,7 +35,6 @@ $('#serviceFilter').val(myParam2);
     });
   });
 
-  
   $("#watch-list").on("click", ".delete-btn", function(event) {
     event.preventDefault();
     const id = $(this).data("id");
@@ -45,8 +43,6 @@ $('#serviceFilter').val(myParam2);
       window.location.href = "/members";
     });
   });
-
-
 
   // listener for watched button
   $("#watch-list").on("click", ".watched-btn", function(event) {
@@ -87,21 +83,32 @@ $('#serviceFilter').val(myParam2);
     event.preventDefault();
     const genre = $("option:selected").val();
     console.log(genre, "Hello Filter");
-    const url=setParam(window.location.search,'genre',$('#genreFilter').val());
-    window.location.href='/members?'+url;
+    const url = setParam(
+      window.location.search,
+      "genre",
+      $("#genreFilter").val()
+    );
+    window.location.href = "/members?" + url;
   });
 
   $(".container").on("change", "#serviceFilter", function(event) {
     event.preventDefault();
     const genre = $("option:selected").val();
     console.log(genre, "Hello Filter");
-    const url=setParam(window.location.search,'service',$('#serviceFilter').val());
-    window.location.href='/members?'+url;
+    const url = setParam(
+      window.location.search,
+      "service",
+      $("#serviceFilter").val()
+    );
+    window.location.href = "/members?" + url;
   });
 
   function setParam(uri, key, val) {
     return uri
-        .replace(RegExp("([?&]"+key+"(?=[=&#]|$)[^#&]*|(?=#|$))"), "&"+key+"="+encodeURIComponent(val))
-        .replace(/^([^?&]+)&/, "$1?");
-}
+      .replace(
+        RegExp("([?&]" + key + "(?=[=&#]|$)[^#&]*|(?=#|$))"),
+        "&" + key + "=" + encodeURIComponent(val)
+      )
+      .replace(/^([^?&]+)&/, "$1?");
+  }
 });
