@@ -1,10 +1,11 @@
-## WatchThis!
+# WatchThis!
 
 ![badge](https://img.shields.io/badge/license-MIT-green)
 
-With so many shows and movies availble to stream on multiple services, it's hard to keep track of what's playing where. Watch This! is your personalized watch list where you can track the shows and movies you want to watch, where they're streaming, update if you've watched them, and delete them from your list. 
+With so many shows and movies available to stream on multiple services, it's hard to keep track of what's playing where. WatchThis! is your personalized watchlist where you can track the shows and movies you want to watch, where they're streaming, update if you've watched them, and delete them from your list. 
 
-![Screen Shot 2020-10-06 at 8 47 33 PM (2)](https://user-images.githubusercontent.com/65747246/95281818-47fc8900-0815-11eb-8dc2-02cdec16963e.png)
+## Demo
+![Demo](public/assets/images/WatchThisDemo.gif?raw=true)
 
 ---
 
@@ -61,7 +62,7 @@ Express-Sessions\
 MySQL\
 Sequelize\
 Heroku\
-IMDB API\
+OMDB API\
 Passport\
 bcrypt\
 Axios  
@@ -79,7 +80,7 @@ Axios
 ---
 
 ## Tests
-This is run through Travis CI and eslint for formatting. We tested each route as we built it to ensure functionality.
+This is run through Travis-CI and ESLint for formatting. We tested each route as we built it to ensure functionality.
 
 ---
 
