@@ -6,7 +6,9 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const list = require("../models/list");
 
-function createList(dbList) {
+
+
+function createList(dbList, filter1,filter2) {
   const movieList = [];
   for (let i = dbList.length - 1; i >= 0; i--) {
     movie = {
@@ -20,9 +22,23 @@ function createList(dbList) {
       image: dbList[i].dataValues.image,
       UserId: dbList[i].dataValues.UserId
     };
+    if(!filter1 && !filter2)
+    {
+      movieList.push(movie);
+    }
+    else
+    {
+      if(filter1 && movie.genre!=filter1){
+          continue;
+      }
+      if(filter2 && movie.service!=filter2){
+        continue;
+    }
     movieList.push(movie);
+    }
   }
   console.log(movieList);
+ 
   return movieList;
 }
 
@@ -47,14 +63,18 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   // calls create list to make list from response for rendering.
   app.get("/members", isAuthenticated, (req, res) => {
+    const val1= req.query.genre;
+    const val2= req.query.service;
+    console.log(val1);
+    console.log(val1);
     //console.log(req);
     db.List.findAll({
       where: {
         userId: req.user.id
       }
     }).then(dbList => {
-      //console.log(dbList);
-      res.render("members", { movieList: createList(dbList) });
+     
+      res.render("members", { movieList: createList(dbList,val1,val2) });
     });
   });
 };
