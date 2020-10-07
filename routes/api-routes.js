@@ -2,7 +2,9 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
+// eslint-disable-next-line no-unused-vars
 const { response } = require("express");
+// eslint-disable-next-line no-unused-vars
 const { contained } = require("sequelize");
 
 //variables used

@@ -4,11 +4,10 @@ const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+// eslint-disable-next-line no-unused-vars
 const list = require("../models/list");
 
-
-
-function createList(dbList, filter1,filter2) {
+function createList(dbList, filter1, filter2) {
   const movieList = [];
   for (let i = dbList.length - 1; i >= 0; i--) {
     movie = {
@@ -22,19 +21,16 @@ function createList(dbList, filter1,filter2) {
       image: dbList[i].dataValues.image,
       UserId: dbList[i].dataValues.UserId
     };
-    if(!filter1 && !filter2)
-    {
+    if (!filter1 && !filter2) {
       movieList.push(movie);
-    }
-    else
-    {
-      if(filter1 && movie.genre!=filter1){
-          continue;
-      }
-      if(filter2 && movie.service!=filter2){
+    } else {
+      if (filter1 && movie.genre !== filter1) {
         continue;
-    }
-    movieList.push(movie);
+      }
+      if (filter2 && movie.service !== filter2) {
+        continue;
+      }
+      movieList.push(movie);
     }
   }
 
@@ -47,7 +43,7 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/members");
     }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   app.get("/login", (req, res) => {
@@ -62,8 +58,8 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   // calls create list to make list from response for rendering.
   app.get("/members", isAuthenticated, (req, res) => {
-    const val1= req.query.genre;
-    const val2= req.query.service;
+    const val1 = req.query.genre;
+    const val2 = req.query.service;
     console.log(val1);
     console.log(val1);
     //console.log(req);
@@ -72,8 +68,7 @@ module.exports = function(app) {
         userId: req.user.id
       }
     }).then(dbList => {
-     
-      res.render("members", { movieList: createList(dbList,val1,val2) });
+      res.render("members", { movieList: createList(dbList, val1, val2) });
     });
   });
 };
