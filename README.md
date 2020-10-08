@@ -86,5 +86,5 @@ This is run through Travis-CI and ESLint for formatting. We tested each route as
 
 ## Deployed App
 
-[WatchThis!](https://dashboard.heroku.com/apps/young-inlet-91954)\
+[WatchThis!](https://dashboard.heroku.com/apps/young-inlet-91954.herokuapp.com)\
 [WatchThis! Repository](https://github.com/gpardington/WatchThis)
