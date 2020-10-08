@@ -16,7 +16,7 @@ With so many shows and movies available to stream on multiple services, it's har
 [Technologies](#technologies)\
 [Contributors](#contributors)\
 [Tests](#tests)\
-[Deployed App](#deployed)
+[Deployed App](#deployed app)
 
 ---
 
@@ -86,5 +86,5 @@ This is run through Travis-CI and ESLint for formatting. We tested each route as
 
 ## Deployed App
 
-[WatchThis!](https://dashboard.heroku.com/apps/young-inlet-91954.herokuapp.com)\
+[WatchThis!](https://young-inlet-91954.herokuapp.com/)\
 [WatchThis! Repository](https://github.com/gpardington/WatchThis)
